@@ -6,10 +6,8 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const methodOverride = require('method-override')
 const path = require("path") 
-//const multer = require("multer") 
 const app = express();
 const upload = require("express-fileupload");
-
 
 // Passport Config
 require('./config/passport')(passport);

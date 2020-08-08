@@ -68,6 +68,16 @@ router.get('/edit/:id', async (req, res) => {
   if(arr2.includes("S.O.S")){
     eventSponser[2]=true
   }
+  var myfiles=[];
+  var dir = './public/'+`${event.id}`;
+
+  if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+    }
+  var arrayOfFiles = fs.readdirSync('./public/'+`${event.id}`);
+  arrayOfFiles.forEach( function (file) {
+    myfiles.push(file);
+});
 
   res.render('edit', { 
     event: event,
@@ -75,13 +85,24 @@ router.get('/edit/:id', async (req, res) => {
     curr_event: event.name,
     eventclass : event.eventClass,
     eventCoordinates: eventCoordinators,
-    users: users
+    users: users,
+    files : myfiles
   })
 })
 
 // Update the event
 router.put('/:id', async (req, res, next) => {
   req.event = await Event.findById(req.params.id)
+  var myfiles=[];
+  var arrayOfFiles = fs.readdirSync('./public/'+`${req.path}`);
+  arrayOfFiles.forEach( function (file) {
+    myfiles.push(file);
+  });
+  for(i=0;i<myfiles.length;i++){
+    if(req.body[myfiles[i]]){
+      fs.unlinkSync('./public/'+`${req.path}`+'/'+myfiles[i]);
+    }
+  }
   next()
 }, saveEventAndRedirect('edit'))
 

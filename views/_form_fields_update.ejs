@@ -47,7 +47,7 @@
     <% for(var i = 0; i < users.length; i++) { %>
     <div class="checkbox" id="checking">      
       <label for="<%= users[i].name %>">
-      <input type="checkbox" name="<%= users[i].name %>" class="<%= eventCoordinators[i] %>"  ><%= users[i].name %>
+      <input type="checkbox" name="<%= users[i].name %>" class="<%= eventCoordinators[i] %>"  > <%= users[i].name %>
       </label>
     </div>
   <% } %>        
@@ -67,6 +67,32 @@
       <input type="checkbox" name="sponser3"  id="sponser3" class="<%= eventSponser[2] %>">
       S.O.S
     </label>
+</div>
+<div class="form-group" style="overflow-y: scroll;">
+  <label for="">Check the images you want to <b>delete</b>:</label>
+  <br>
+    <% if(files.length==0){ %>
+      <label>
+        No images
+      </label>
+      <% } else { %>
+      <div class="row" style="display: flex;flex-wrap: wrap;padding: 0 4px; height:500px; width: auto">
+      <% for(var i = 0; i < files.length; i++) { %>
+        <div class="column" style="flex: 50%;padding: 0 4px;">
+          <div class="checkbox" id="checking">
+            <label for="<%= files[i] %>">
+              <div class="thumbnail"> 
+                <img src="../<%= event.id %>/<%= files[i] %>" alt="photo" style="width:100%">
+                <center>
+                  <%= files[i] %>  <input type="checkbox" name="<%= files[i] %>"> <!--class="<%= eventCoordinators[i] %>"-->
+                </center>
+              </div>
+            </label>  
+          </div>
+        </div>
+      <% } %>      
+    </div>
+      <% } %>  
 </div>
 <a href="/" class="btn btn-secondary">Cancel</a>
 <button type="submit" class="btn btn-primary">Update</button>
