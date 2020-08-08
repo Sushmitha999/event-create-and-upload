@@ -1,7 +1,7 @@
 {
-  "name": "event_create_and_upload",
+  "name": "node_passport_login",
   "version": "2.0.0",
-  "description": "Node.js authentication with Passport and image uploading for events",
+  "description": "Node.js authentication with Passport",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",

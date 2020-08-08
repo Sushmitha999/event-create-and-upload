@@ -41,14 +41,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(upload());
 // Session
-app.use(session({
-  secret: process.env.SESSIONPASS,
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-      maxAge: 12 * 3600 * 1000
-  }
-}));
+app.use(
+  session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+  })
+);
 
 // Passport middleware
 app.use(passport.initialize());
