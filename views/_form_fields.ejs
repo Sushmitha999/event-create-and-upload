@@ -1,0 +1,76 @@
+  <div class="form-group">
+      <label for="name">Event name</label>
+      <select id="name" name="name" class="form-control">
+          <% event_names.forEach(event_name => { %>
+            <option value="<%= event_name %>" type="text"><%= event_name %></option>
+          <% }) %>        
+      </select>
+    </div>
+  <div class="form-group" style="display:none" id="addEvent">
+      <label for="newEvent">New Event name</label>
+      <input value="<%= event.name %>" type="text" name="newEvent" id="newEvent" class="form-control">
+    </div>
+    <div>
+      <label for="myCheck"><input type="checkbox" name="newChecked" id="newChecked" onclick="newEventFunction()">
+        Add a new event name</label> 
+    </div>
+  <br>
+
+  <div class="form-group">
+    <label for="dateTime">Date and time</label>
+    <div class="input-group date" id="datetime" data-target-input="nearest">
+        <input type="text" value="<%= event.dateTime %>"  name="dateTime" class="form-control datetimepicker-input" data-target="#datetime"/>
+        <div class="input-group-append" data-target="#datetime" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+        </div>
+    </div>
+</div>
+  <div class="form-group">
+    <label for="location">Location</label>
+    <input value="<%= event.location %>" type="text" name="location" id="location" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="eventClass">Event Class</label>
+    <select id="eventClass" name="eventClass" class="form-control">
+      <option value="Village Activities" type="text">Village Activities</option>
+      <option value="Regional Science Center" type="text">Regional Science Center</option>
+      <option value="Blood Donation Camp" type="text">Blood Donation Camp</option>
+      <option value="Blind Schools" type="text">Blind Schools</option>
+      <option value="Schools" type="text">Schools</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea name="description" id="description" class="form-control"><%= event.description %></textarea>
+  </div>
+  <div class="form-group" style="overflow-y: scroll; height:200px;">
+    <label for="sponsers">Coordinators</label>
+    <br>
+      <% for(var i = 0; i < users.length; i++) { %>
+      <div class="checkbox">      
+        <label for="<%= users[i].name %>">
+        <input type="checkbox" name="<%= users[i].name %>" id="<%= users[i].name %>"><%= users[i].name %>
+        </label>
+      </div>
+    <% } %>        
+  </div>
+  <div class="form-group">
+    <label for="sponsers">Sponsers</label>
+    <br>
+      <label for="sponser1" class="checkbox-inline">
+        <input type="checkbox" name="sponser1"  id="sponser1" >
+        Ullas
+      </label>
+      <label for="sponser2" class="checkbox-inline">
+        <input type="checkbox" name="sponser2" id="sponser2" >
+        Purdue University
+      </label>
+      <label for="sponser3" class="checkbox-inline">
+        <input type="checkbox" name="sponser3"  id="sponser3" >
+        S.O.S
+      </label>
+  </div>
+  <a href="/" class="btn btn-secondary">Cancel</a>
+  <button type="submit" class="btn btn-primary">Save</button>
+
+  

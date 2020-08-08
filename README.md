@@ -1,8 +1,23 @@
-# event-create-and-upload
+# Node.js & Passport Login
 
-Install the dependencies using `npm install`
+This is a user login and registration app using Node.js, Express, Passport, Mongoose, EJS and some other packages.
 
-Paste your mongodb atlas connection string in the file .env-test and save the file as .env.
-Eg. `DBURI = <your connection string>`
+### Version: 2.0.0
 
-Use `npm run dev` or `node app.js` to start the server.
+### Usage
+
+```sh
+$ npm install
+```
+
+```sh
+$ npm start
+# Or run with Nodemon
+$ npm run dev
+
+# Visit http://localhost:5000
+```
+
+### MongoDB
+
+Open "config/keys.js" and add your MongoDB URI, local or Atlas

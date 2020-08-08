@@ -1,0 +1,94 @@
+<div class="form-group">
+    <label for="name">Event name</label>
+    <select id="name" name="name" class="form-control">
+        <option value="<%= curr_event %>" selected="selected"><%= curr_event %></option>
+        <% event_names.forEach(event_name => { %>
+            <% if(event_name!=curr_event) {%>
+          <option value="<%= event_name %>" type="text"><%= event_name %></option>
+          <% } %> 
+        <% }) %>        
+    </select>
+</div>
+<div class="form-group" style="display:none" id="addEvent">
+    <label for="newEvent">New Event name</label>
+    <input value="<%= event.name %>" type="text" name="newEvent" id="newEvent" class="form-control">
+  </div>
+  <div>
+    <label for="myCheck"><input type="checkbox" name="newChecked" id="newChecked" onclick="newEventFunction()">
+      Add a new event name</label> 
+  </div>
+<br>
+<div class="form-group">
+    <label for="dateTime">Date and time</label>
+    <div class="input-group date" id="datetime" data-target-input="nearest">
+        <input type="text" value="<%= event.dateTime %>"  name="dateTime" class="form-control datetimepicker-input" data-target="#datetime"/>
+        <div class="input-group-append" data-target="#datetime" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+  <label for="location">Location</label>
+  <input value="<%= event.location %>" type="text" name="location" id="location" class="form-control">
+</div>
+<div class="form-group">
+  <label for="eventClass">Event Class</label>
+  <select id="eventClass" name="eventClass" class="form-control" onfocus="eventclassfun('<%= eventclass %>')">
+    <option value="<%= eventclass %>" selected="selected"><%= eventclass %></option>
+  </select>
+</div>
+<div class="form-group">
+  <label for="description">Description</label>
+  <textarea name="description" id="description" class="form-control"><%= event.description %></textarea>
+</div>
+<div class="form-group" style="overflow-y: scroll; height:200px;">
+  <label for="">Coordinators</label>
+  <br>
+    <% for(var i = 0; i < users.length; i++) { %>
+    <div class="checkbox" id="checking">      
+      <label for="<%= users[i].name %>">
+      <input type="checkbox" name="<%= users[i].name %>" class="<%= eventCoordinators[i] %>"  ><%= users[i].name %>
+      </label>
+    </div>
+  <% } %>        
+</div>
+<div class="form-group">
+  <label for="sponsers">Sponsers</label>
+  <br>
+    <label for="sponser1" class="checkbox-inline">
+      <input type="checkbox" name="sponser1"  id="sponser1" class="<%= eventSponser[0] %>">
+      Ullas
+    </label>
+    <label for="sponser2" class="checkbox-inline">
+      <input type="checkbox" name="sponser2" id="sponser2" class="<%= eventSponser[1] %>">
+      Purdue University
+    </label>
+    <label for="sponser3" class="checkbox-inline">
+      <input type="checkbox" name="sponser3"  id="sponser3" class="<%= eventSponser[2] %>">
+      S.O.S
+    </label>
+</div>
+<a href="/" class="btn btn-secondary">Cancel</a>
+<button type="submit" class="btn btn-primary">Update</button>
+<script>
+function eventclassfun(ele){
+var select = document.getElementById("eventClass");
+var options = ["Village Activities", "Regional Science Center", "Blood Donation Camp", "Blind Schools", "Schools"];
+options.splice (options.indexOf(ele), 1);
+for(var i = 0; i < options.length; i++) {
+    var opt = options[i];
+    var el = document.createElement("option");
+    el.textContent = opt;
+    el.value = opt;
+    el.type = "text";
+    el.id = opt;
+    select.appendChild(el);
+}
+}
+var check = document.getElementsByClassName("true");
+for(var i=0;i<check.length;i++){
+    check[i].setAttribute("checked", "checked");
+}
+</script>
+
+
