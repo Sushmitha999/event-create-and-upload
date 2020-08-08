@@ -16,5 +16,6 @@ $ npm run dev
 
 ### MongoDB
 
-Open `.env-test` and add your MongoDB URI, local or Atlas. Save the file as .env
+Open `.env-test` and add your MongoDB URI, local or Atlas. Save the file as .env.
+
 Eg. `DBURI = <your connection string>`
