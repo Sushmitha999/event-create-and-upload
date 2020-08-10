@@ -18,9 +18,14 @@ const UserSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  nssrole:
+  {
+    type: String,
+    required: true
   }
 });
 
-const User = mongoose.model('User', UserSchema);
+const User = mongoose.model('NssTeam', UserSchema);
 
 module.exports = User;

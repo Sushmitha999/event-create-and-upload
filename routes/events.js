@@ -54,7 +54,7 @@ router.get('/edit/:id', async (req, res) => {
       eventCoordinators[i]=false
     }
   }
-  arr2 = event.sponser
+  arr2 = event.sponsers
   eventSponser = []
   for(i=0;i<3;i++){
     eventSponser[i]=false
@@ -130,18 +130,18 @@ function saveEventAndRedirect(path) {
     let sponser1 = req.body['sponser1']
     let sponser2 = req.body['sponser2']
     let sponser3 = req.body['sponser3']
-    event.sponser = []
+    event.sponsers = []
     if(sponser1)
     {
-      event.sponser.push("Ullas")
+      event.sponsers.push("Ullas")
     }
     if(sponser2)
     {
-      event.sponser.push("Purdue University")
+      event.sponsers.push("Purdue University")
     }
     if(sponser3)
     {
-      event.sponser.push("S.O.S")
+      event.sponsers.push("S.O.S")
     }
     try {
       event = await event.save()

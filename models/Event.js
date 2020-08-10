@@ -26,10 +26,11 @@ const EventSchema = new mongoose.Schema({
       type: [String],
       required: true
   },
-  sponser: {
-      type: [String]
+  sponsers: {
+      type: [String],
+      required: true
   },
 });
-const Event = mongoose.model('Event', EventSchema);
+const Event = mongoose.model('Events', EventSchema);
 
 module.exports = Event;
